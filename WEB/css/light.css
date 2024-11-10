@@ -1,0 +1,21 @@
+:root {
+    --text-color: rgb(72, 72, 72);
+    --link-color: rgb(46, 46, 46);
+    --link-color-hover: rgb(25, 25, 25);
+    --table-header-color: rgb(58, 58, 58);
+    --table-row-odd: rgb(244, 244, 244);
+    --table-row-even: rgb(230, 230, 230);
+    --input-background: rgb(218, 218, 218);
+    --input-background-focus: rgb(202, 202, 202);
+    --input-color: rgb(58, 58, 58);
+    --paginate-background: rgb(218, 218, 218);
+    --paginate-background-hover: rgb(197, 197, 197);
+    --paginate-background-focus: rgb(185, 185, 185);
+    --paginate-color: rgb(84, 84, 84);
+    --paginate-color-disabled: rgb(84, 84, 84);
+    --players-total-color: rgb(58, 58, 58);
+    --selection-color: rgb(173, 168, 162);
+    --selection-background: rgb(41, 49, 41);
+    --scrollbar-background: rgb(206, 206, 206);
+    --scrollbar-color: rgb(179, 179, 179);
+}

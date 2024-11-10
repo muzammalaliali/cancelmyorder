@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Instructions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+            background-color: #f1f1f1;
+            padding: 2px 4px;
+        }
+
+        pre {
+            background-color: #f1f1f1;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        pre code {
+            display: block;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bot Hosting</h1>
+    <p>You can host your bot using the following link: <a href="https://serverstarter.host/clients/store/discord-bots">Bot Hosting</a></p>
+
+    <h1>Website Hosting</h1>
+    <p>You can host your website using the following link: <a href="https://serverstarter.host/clients/store/web-hosting">Website Hosting</a></p>
+
+    <h2>Setup Instructions</h2>
+    <p><strong>Note:</strong> Please avoid placing the files in directories named "/discord" or "/steam" as it may affect the redirects.</p>
+
+    <h3>If you are using <a href="https://serverstarter.host">serverstarter.host</a> Web Hosting</h3>
+    <p>Contact the staff team at SS.H and request the following changes to be made for Simple Link:</p>
+    <pre><code>if (!-e $request_filename){
+    rewrite ^/([^\.]+)$ /$1.php break;
+}</code></pre>
+
+    <h3>If you are using NGINX or your host has rewrite disabled</h3>
+    <p>Follow these steps:</p>
+    <ol>
+        <li>Update the URL in the developer portal accordingly.</li>
+        <li>In the file <code>complete.php</code>, find the <code>href='unlink'</code> and replace it with <code>href='unlink.php'</code>.</li>
+        <li>Open <code>index.php</code>, find the word "complete" and replace it with "complete.php".</li>
+    </ol>
+
+    <h2>Linux Specific</h2>
+    <p>Make sure you have the following packages installed:</p>
+    <pre><code>sudo apt-get install php-mysql php-pdo php-xml php-curl</code></pre>
+    <p>For example, on PHP 8, you would need to run:</p>
+    <pre><code>sudo apt-get install php8.0-xml php8.0-curl php8.0-mysql php8.0-pdo</code></pre>
+
+    <h2>Pre Phase - Discord Dev Portal</h2>
+    <ol>
+        <li>Create a new Discord Bot in the <a href="https://discord.com/developers/applications">Discord Developer Portal</a>. Choose any name for your bot and make note of it for the next steps.</li>
+        <li>In the OAuth2 section, under "General", set the URL in "Redirects" to <code>https://yourdomain.com/</code>. If you're using a subdomain, it would be <code>https://sub.yourdomain.com/</code>.</li>
+        <li>Scroll down to the URL Generators section and select "bot" and "applications.commands". A new section named "Bot Permissions" will appear. Choose the following permissions: Manage Nicknames, Read Messages/View Channels, Manage Server, Manage Roles, Manage Messages. Click the save button and invite the bot to your guild. Ensure that the role with the same name as your bot is at the top for proper role assignment.</li>
+        <li>In the bot section, enable all Privileged Gateway Intents.</li>
+    </ol>
+
+    <h2>Phase 1 - Database</h2>
+    <ol>
+        <li>Create a new database (either through your web host or bot host) and import the SQL file from the "SQL File" folder.</li>
+    </ol>
+
+    <h2>Phase 2 - Website</h2>
+    <ol>
+        <li>Upload all files from the "website" directory.</li>
+        <li>Modify <code>main.conf.php</code>:</li>
+    </ol>
+    <pre><code>Change the following settings:
+SQL_USER, SQL_PASS, and DB_NAME to the correct details.
+Redirect: The URL you set while making a bot on <a href="https://discord.com/developers/applications">Discord Developer Portal</a>. Example: https://yourdomain.com/
+steamGroupUse: true/false whether or not you want to use the feature.
+steamGroupURL: The URL to your Steam group.
+steamGroupID: The ID of your Steam group found in "Edit Group Profile" on your groups page.
+VerifiedRoleID: The Role ID of your Verified role in Discord.
+Webhook: The URL where you will receive webhook notifications. Create a webhook for a channel of your choice in Discord.
+Logo URL: The URL that will show up on the website.
+SiteTitle: The title which will show up on the website.
+Guild ID: Your server's Guild ID.
+Bot token, Client ID, and Client Secret: Find them on the developer portal.</code></pre>
+
+    <ol start="3">
+        <li>Modify <code>steamauth/SteamConfig.php</code>:</li>
+    </ol>
+    <pre><code>Replace the following values:
+YOUR DOMAIN HERE: Your main linking site (e.g., https://yourdomain.com or https://sub.yourdomain.com/).
+STEAM API KEY: Your Steam API Key.</code></pre>
+
+    <ol start="4">
+        <li>Modify <code>api.php</code>:</li>
+    </ol>
+    <pre><code>Set your SECRET KEY in this file (by default, it's "$$SECRET$$"). You can choose any value you like.</code></pre>
+
+    <ol start="5">
+        <li>Modify <code>index.php</code>:</li>
+    </ol>
+    <pre><code>Change all meta tags like "Your Server", "Your Logo", "Your Link" to the appropriate values.</code></pre>
+
+    <ol start="6">
+        <li>Modify <code>admin/steamauth/SteamConfig.php</code>:</li>
+    </ol>
+    <pre><code>Replace the following values:
+LINKWEBSITEHERE: Your link website domain.
+APIKEYHERE: Your Steam API Key.</code></pre>
+
+    <h2>Phase 3 - Plugin</h2>
+    <ol>
+        <li>Upload the plugin to your server.</li>
+    </ol>
+
+    <ol start="2">
+        <li>Modify the <code>oxide/config/UniversalLink.json</code> file:</li>
+    </ol>
+    <pre><code>Fill in the details. The API URL should be <code>https://yourdomain.com/api.php?action=steamChecks&id={id(s)}&secret=REPLACE-WITH-YOUR-SECRET-FROM-API-FILE</code>.</code></pre>
+
+    <ol start="3">
+        <li>If you are using role syncing, refer to the JSON section starting with VIP and VIP+. The roles mentioned here will be synced to Discord, and the numbers below are the Discord Role IDs. You can sync a single Oxide role to multiple Discord roles by adding more to the list.</li>
+    </ol>
+
+    <h2>Phase 4 - Bot</h2>
+    <ol>
+        <li>Upload the files <code>index.js</code>, <code>config.json</code>, <code>package.json</code>, <code>src</code>, and <code>node_modules</code>.</li>
+    </ol>
+
+    <ol start="2">
+        <li>Edit <code>config.json</code> according to your preferences.</li>
+    </ol>
+
+    <h2>Phase 5 - Admin Panel</h2>
+    <ol>
+        <li>Open the 'admin' directory.</li>
+    </ol>
+
+    <ol start="2">
+        <li>Edit <code>site.conf.php</code> and fill in all your information.</li>
+    </ol>
+
+    <ol start="3">
+        <li>In your database, locate your record by searching your Discord/Steam ID.</li>
+    </ol>
+
+    <ol start="4">
+        <li>Edit <code>staff_flag</code> and set its value to 1 (it should be 0).</li>
+    </ol>
+
+    <ol start="5">
+        <li>Access the login page at <code>https://yourlinkingdomain.com/admin</code>.</li>
+    </ol>
+
+    <p>For any questions, comments, or concerns, feel free to contact me on Discord: Ryz0r#0101</p>
+</body>
+
+</html>

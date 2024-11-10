@@ -1,0 +1,8 @@
+{
+  "ApiURL": "",
+  "SecretKey": "",
+  "ServerID": "1",
+  "Count suicide kills": true,
+  "Count environment kills": true,
+  "UntrackedPlayerIds": []
+}

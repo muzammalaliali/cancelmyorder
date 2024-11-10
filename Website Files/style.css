@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+* {
+    transition: all 0.3s ease-in-out;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Nunito', sans-serif;
+    background: #111;
+    background-size: cover;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    border-bottom: 2px solid white;
+}
+
+.logo img {
+    width: 130px;
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover {
+    border-bottom: 2px solid white;
+}
+
+#logincontent {
+    width: 50%;
+    max-width: 500px;
+    padding: 40px;
+    background: rgba(25, 25, 25, .7);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+    border: 1px solid white;
+}
+
+#logincontent center {
+    font-size: 30px;
+}
+
+.steamButton, .discordButton, .steamGroupButton {
+    display: inline-block;
+    padding: 15px 30px;
+    width: 80%;
+    margin: 10px;
+    color: white;
+    background-color: #333;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.steamInfo {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.steamInfo .label {
+    font-weight: bold;
+}
+
+.steamInfo .value {
+    font-size: 20px;
+    color: #fff;
+}
+
+
+.steamButton:disabled, .discordButton:disabled, .steamGroupButton:disabled {
+    background-color: #222;
+    border-color: #ff0000;
+    cursor: not-allowed;
+}
+
+.steamButton:hover:enabled, .discordButton:hover:enabled, .steamGroupButton:enabled {
+    background-color: #555;
+}
+
+.steamButton:active:enabled, .discordButton:active:enabled, .steamGroupButton:active:enabled {
+    background-color: #777;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step span {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.avatars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.avatar {
+    border-radius: 4px;
+    border: 1px solid #17a2b8;
+    height: 125px;
+}
+
+
+@media only screen and (max-device-width: 480px) {
+    .container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    #logincontent {
+        padding: 30px;
+    }
+
+    #logincontent center {
+        font-size: 20px;
+    }
+
+    .steamButton, .discordButton {
+        padding: 10px 20px;
+        font-size: 18px;
+    }
+}

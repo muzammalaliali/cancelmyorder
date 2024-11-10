@@ -1,0 +1,31 @@
+{
+    "BOT_TOKEN": "",
+    "DISCORD_GUILD_ID": "",
+    "BOT_STATUS": [
+        "{linked} verified",
+        "linking @ {site}"
+    ],
+
+    "WEBSITE_URL": "https://link.ryann.gg/",
+    "SERVER_NAME": "Ryz0r Test",
+    "LOGO_URL": "https://rzr.bz/NkcMLyX.JPG",
+    "SECRET_KEY": "",
+    "VERIFIED_ROLE": "ROLE_ID",
+    "STAFF_ROLES": [ "ROLE_ID", "ROLE_ID" ], 
+    "SYNC_NAMES": false,
+    "LINKING INSTRUCTIONS": {
+        "DM_INSTRUCTIONS": true,
+        "REPLY_IN_CHANNEL": false
+    },
+
+    "HOW_TO_LINK_EMBED": {
+        "EMBED_TITLE": "VERIFICATION INSTRUCTIONS",
+        "TITLE_URL": "{websiteUrl}",
+        "EMBED_DESCRIPTION": "The instructions to link your accounts to recieve your Discord Kit!\n\n> **Step 1:**\nVisit {websiteUrl}\n\n> **Step 2:**\n Login in with both discord and steam!\n\n> **Step 3:**\n Ensure both Steam and Discord say linked, and if so - you are done!",
+        "EMBED_FOOTER": "Site - {websiteUrl}",
+        "EMBED_SMALL_IMAGE": "",
+        "EMBED_LARGE_IMAGE": "",
+        "EMBED_COLOR": "#A59B83"
+    }
+
+}
